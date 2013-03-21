@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-<xs:element name="survey">
+<xs:element name="hdi">
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Center_Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Incident_ID" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Closed" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Completed" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Alert" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Q1" minOccurs="0" maxOccurs="1"/>
-				<xs:simpleType>
-					<xs:restriction base="xs:integer">
-					    <xs:minInclusive value="1"/>
-					    <xs:maxInclusive value="5"/>
-    				</xs:restriction>
-				</xs:simpleType>
-			<xs:element name="Q2" minOccurs="0" maxOccurs="1"/>
-				<xs:simpleType>
-					<xs:restriction base="xs:integer">
-					    <xs:minInclusive value="1"/>
-					    <xs:maxInclusive value="5"/>
-    				</xs:restriction>
-				</xs:simpleType>
-			<xs:element name="Q3" minOccurs="0" maxOccurs="1"/>
-				<xs:simpleType>
-					<xs:restriction base="xs:integer">
-					    <xs:minInclusive value="1"/>
-					    <xs:maxInclusive value="5"/>
-    				</xs:restriction>
-				</xs:simpleType>
-			<xs:element name="Q4" minOccurs="0" maxOccurs="1"/>
-				<xs:simpleType>
-					<xs:restriction base="xs:integer">
-					    <xs:minInclusive value="1"/>
-					    <xs:maxInclusive value="5"/>
-    				</xs:restriction>
-				</xs:simpleType>
-			<xs:element name="Q5" minOccurs="0" maxOccurs="1"/>
-				<xs:simpleType>
-					<xs:restriction base="xs:integer">
-					    <xs:minInclusive value="1"/>
-					    <xs:maxInclusive value="5"/>
-    				</xs:restriction>
-				</xs:simpleType>
-			<xs:element name="Resolution" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="Contact_Me" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="survey">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Center_Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Incident_ID" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Closed" type="xs:string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Completed" type="xs:string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Alert" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Q1" minOccurs="0" maxOccurs="1"/>
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+								    <xs:minInclusive value="1"/>
+								    <xs:maxInclusive value="5"/>
+			    				</xs:restriction>
+							</xs:simpleType>
+						<xs:element name="Q2" minOccurs="0" maxOccurs="1"/>
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+								    <xs:minInclusive value="1"/>
+								    <xs:maxInclusive value="5"/>
+			    				</xs:restriction>
+							</xs:simpleType>
+						<xs:element name="Q3" minOccurs="0" maxOccurs="1"/>
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+								    <xs:minInclusive value="1"/>
+								    <xs:maxInclusive value="5"/>
+			    				</xs:restriction>
+							</xs:simpleType>
+						<xs:element name="Q4" minOccurs="0" maxOccurs="1"/>
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+								    <xs:minInclusive value="1"/>
+								    <xs:maxInclusive value="5"/>
+			    				</xs:restriction>
+							</xs:simpleType>
+						<xs:element name="Q5" minOccurs="0" maxOccurs="1"/>
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+								    <xs:minInclusive value="1"/>
+								    <xs:maxInclusive value="5"/>
+			    				</xs:restriction>
+							</xs:simpleType>
+						<xs:element name="Resolution" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Contact_Me" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-</xs:element>
+</xs:element>		
 
 </xs:schema>
