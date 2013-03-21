@@ -1,7 +1,7 @@
 public class Footprint implements Parser {
 
   @Override
-	private ArrayList<LinkedList<Hashtable<Integer, String>>> Parse() {
+	private ArrayList<LinkedList<Hashtable<Integer, Object>>> Parse() {
 		
 	}
 	
