@@ -6,7 +6,7 @@ public class Footprint implements Parser {
 	}
 	
 	@Override
-	private boolean Validate(DTO object){
+	private boolean Validate(String file){
 		
 	}
 }
