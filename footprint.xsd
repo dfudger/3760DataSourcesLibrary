@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="footprint">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ticket">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="mrID" type="xs:int" minOccurs="1"/>
+							<xs:element name="mrREF_TO_AB" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrREF_TO_MR" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrTITLE" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrPRIORITY" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrSTATUS" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrDESCRIPTION" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrALLDESCRIPTIONS" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrASSIGNEES" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrATTACHMENTS" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrUPDATEDATE" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="mrSUBMITTER" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrSUBMITDATE" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="mrPOPULARITY" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrUNASSIGNED" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrTIMESTAMP" type="xs:time" minOccurs="0"/>
+							<xs:element name="mrURGENT" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrSUBTASK_ORDER" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrREF_TO_MRX" type="xs:string" minOccurs="0"/>
+							<xs:element name="<mrESCALATEDBY" type="xs:string" minOccurs="0"/>
+							<xs:element name="Problem__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="Issue__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="Symptom" type="xs:string" minOccurs="0"/>
+							<xs:element name="Error__bMessage" type="xs:string" minOccurs="0"/>
+							<xs:element name="Follow__bUp__bDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Work__bScheduled" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Work__bScheduled__bLink" type="xs:string" minOccurs="0"/>
+							<xs:element name="Submission" type="xs:string" minOccurs="0"/>
+							<xs:element name="IP__bAddress" type="xs:string" minOccurs="0"/>
+							<xs:element name="Memory" type="xs:string" minOccurs="0"/>
+							<xs:element name="Hard__bDisk__bSize" type="xs:string" minOccurs="0"/>
+							<xs:element name="<CPU__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="CPU__bSpeed" type="xs:string" minOccurs="0"/>
+							<xs:element name="OS" type="xs:string" minOccurs="0"/>
+							<xs:element name="Machine__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="Manufacturer" type="xs:string" minOccurs="0"/>
+							<xs:element name="Serial__bNumber" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrSOLUTION_TYPE" type="xs:string" minOccurs="0"/>
+							<xs:element name="SERVICE_REQUEST_CI_TYPE_ID" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrNAMP_ID" type="xs:int" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ticket_history">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="mrID" type="xs:int" minOccurs="1"/>
+							<xs:element name="mrREF_TO_AB" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrREF_TO_MR" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrTITLE" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrPRIORITY" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrSTATUS" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrDESCRIPTION" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrALLDESCRIPTIONS" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrASSIGNEES" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrATTACHMENTS" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrUPDATEDATE" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="mrSUBMITTER" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrSUBMITDATE" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="mrPOPULARITY" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrUNASSIGNED" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrTIMESTAMP" type="xs:time" minOccurs="0"/>
+							<xs:element name="mrURGENT" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrSUBTASK_ORDER" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrREF_TO_MRX" type="xs:string" minOccurs="0"/>
+							<xs:element name="<mrESCALATEDBY" type="xs:string" minOccurs="0"/>
+							<xs:element name="Problem__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="Issue__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="Symptom" type="xs:string" minOccurs="0"/>
+							<xs:element name="Error__bMessage" type="xs:string" minOccurs="0"/>
+							<xs:element name="Follow__bUp__bDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Work__bScheduled" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Work__bScheduled__bLink" type="xs:string" minOccurs="0"/>
+							<xs:element name="Submission" type="xs:string" minOccurs="0"/>
+							<xs:element name="IP__bAddress" type="xs:string" minOccurs="0"/>
+							<xs:element name="Memory" type="xs:string" minOccurs="0"/>
+							<xs:element name="Hard__bDisk__bSize" type="xs:string" minOccurs="0"/>
+							<xs:element name="<CPU__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="CPU__bSpeed" type="xs:string" minOccurs="0"/>
+							<xs:element name="OS" type="xs:string" minOccurs="0"/>
+							<xs:element name="Machine__bType" type="xs:string" minOccurs="0"/>
+							<xs:element name="Manufacturer" type="xs:string" minOccurs="0"/>
+							<xs:element name="Serial__bNumber" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrSOLUTION_TYPE" type="xs:string" minOccurs="0"/>
+							<xs:element name="SERVICE_REQUEST_CI_TYPE_ID" type="xs:int" minOccurs="0"/>
+							<xs:element name="mrNAMP_ID" type="xs:int" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="timetracking">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="mrID" type="xs:int" minOccurs="1"/>
+							<xs:element name="mrGENERATION" type="xs:int" minOccurs="1"/>
+							<xs:element name="mrTIMESPENT" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrRATE" type="xs:float" minOccurs="0"/>
+							<xs:element name="mrTIMEDATE" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="mrTIMEUSER" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrRATEDESC" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrCOMMENT" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
