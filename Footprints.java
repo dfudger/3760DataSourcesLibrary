@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Footprint implements Parser {
+public class Footprints implements Parser {
   @Override
   private ArrayList<Hashtable<Integer, Object>> Parse() {}
 	
