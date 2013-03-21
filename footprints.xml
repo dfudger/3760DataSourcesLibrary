@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<footprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<footprints xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="footprint.xsd">
 
 	<ticket>
@@ -100,4 +100,4 @@
 		<mrCOMMENT></mrCOMMENT>
 	</timetracking>
 
-</footprint>
+</footprints>
