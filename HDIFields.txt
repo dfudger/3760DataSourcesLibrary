@@ -1,0 +1,13 @@
+survey
+0 Center_Name
+1 Incident_ID 
+2 Closed 
+3 Completed 
+4 Alert 
+5 Q1 
+6 Q2
+7 Q3 
+8 Q4 
+9 Q5 
+10 Resolution
+11 Contact_Me
