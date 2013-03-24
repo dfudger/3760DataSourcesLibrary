@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -7,7 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class Footprint implements Parser {
 	@Override
-	private ArrayList<Hashtable<Integer, Object>> Parse() {
+	private ArrayList<HashMap<Integer, Object>> Parse() {
 	}
 
 	@Override
@@ -39,7 +39,9 @@ public class Footprint implements Parser {
 		return true;
 	}
 
-	private Hashtable<Integer, String> getFieldFile() {
+	private HashMap<Integer, String> getFieldFile() {
 
+		// File containing the fields: FootprintsField.txt
+		
 	}
 }
