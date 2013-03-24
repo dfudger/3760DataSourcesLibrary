@@ -39,7 +39,7 @@ public class Footprint implements Parser {
 		return true;
 	}
 
-	private Hashtable<Integer, String> getFieldFile(String file) {
+	private Hashtable<Integer, String> getFieldFile() {
 
 	}
 }
