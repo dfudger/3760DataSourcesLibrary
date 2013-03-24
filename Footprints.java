@@ -41,6 +41,5 @@ public class Footprint implements Parser {
 
 	private String getFieldFile() {
 		return "FootprintsField.txt";
-		
 	}
 }
