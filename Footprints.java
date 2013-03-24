@@ -39,9 +39,8 @@ public class Footprint implements Parser {
 		return true;
 	}
 
-	private Hashtable<Integer, String> getFieldFile() {
-
-		// File containing the fields: FootprintsField.txt
+	private String getFieldFile() {
+		return "FootprintsField.txt";
 		
 	}
 }
