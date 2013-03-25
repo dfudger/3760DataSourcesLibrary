@@ -1,0 +1,9 @@
+rrd
+0	Average5m
+1	Average30m
+2	Average2h
+3	Average1d
+4	Max5m
+5	Max30m
+6	Max2h
+7	Max1d
