@@ -1,0 +1,4 @@
+To try to make a connection to the MS SQL Server
+
+ 1. Compile the code: javac Footprints.java
+ 2. Execute the code by specifying the classpath: java -classpath "path_to_the_sqjdbcjar"/sqljdbc4.jar:. Footprints
