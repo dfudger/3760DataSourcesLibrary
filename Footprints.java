@@ -1,20 +1,19 @@
-import java.util.ArrayList;
-import java.util.HashTable;
-import java.io.File;
+import java.util.*;
+import java.io.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-public class Footprint implements Parser {
-	@Override
-	private ArrayList<Hashtable<Integer, Object>> Parse() {
-	}
+import java.sql.*;
 
-	@Override
+/* Without implementing the Parse interface (test puprose only) */
+
+public class Footprint {
+
 	private boolean Validate(String file) {
-		static final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
-		static final String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
-		static final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
+		String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
+		String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
+		String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
@@ -35,11 +34,56 @@ public class Footprint implements Parser {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return true;
 	}
 
-	private String getFieldFile() {
+	private static String getFieldFile() {
 		return "FootprintsField.txt";
+	}
+
+	public static void main(String[] args) {
+		String connectionUrl = "jdbc:sqlserver://sunshine.cfs.uoguelph.ca;" +
+				   "databaseName=Footprints_view;user=fpviewer;password=fpviewer;";
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			Connection conn = DriverManager.getConnection(connectionUrl);
+			System.out.println("Connection succeeded");
+		}
+		catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private ArrayList<Hashtable<Integer, Object>> parse()
+			throws FileNotFoundException, IOException {
+
+		Hashtable<String, Integer> fields = mapNamesField();
+		// 1. Connect to the Footprints DB
+		// 2. Fill the hashtable with the data found
+		// 3. Return the array of hashtable
+		return null;
+	}
+
+	private static Hashtable<String, Integer> mapNamesField()
+			throws FileNotFoundException, IOException {
+		BufferedReader in;
+		String line;
+		Hashtable<String, Integer> retVal;
+
+		in = new BufferedReader(new FileReader("FootprintsField.txt"));
+		retVal = new Hashtable<String, Integer>();
+
+		while ((line = in.readLine()) != null) {
+			String tokens[] = line.split(" ");
+
+			if (tokens.length == 1) {
+				continue;
+			} else if (tokens.length == 2) {
+				retVal.put(tokens[1], Integer.parseInt(tokens[0]));
+			}
+		}
+
+		return retVal;
 	}
 }
