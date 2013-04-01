@@ -8,6 +8,19 @@ public class Retriever {
 	
 	public Retriever() {
 		sources = new Hashtable<Sources, Parser>();
+		sources.put(Sources.FOOTPRINTS, new Footprints());
+	}
+	
+	public static void main(String[] args){
+		
+		Retriever test = new Retriever();
+		
+		ArrayList<Integer> fields = new ArrayList<Integer>();
+		for (int i=0; i<=30; i++)
+			fields.add(i);
+		
+		String xmlString = test.retrieve(Sources.FOOTPRINTS, fields);
+		System.out.println(xmlString);
 	}
 	
 	public String retrieve(Sources source, ArrayList<Integer> fields) {
@@ -48,10 +61,10 @@ public class Retriever {
 			xml = "Other Exception";
 		}
 		
-		if (sources.get(source).validate(xml)) {
+		/* if (sources.get(source).validate(xml)) {
 			return xml;
-		}
+		} */
 		
-		return null;
+		return xml;
 	}
 }
