@@ -12,41 +12,21 @@
 						<xs:element name="Closed" type="xs:string" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="Completed" type="xs:string" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="Alert" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-						<xs:element name="Q1" minOccurs="0" maxOccurs="1"/>
-							<xs:simpleType>
-								<xs:restriction base="xs:integer">
-								    <xs:minInclusive value="1"/>
-								    <xs:maxInclusive value="5"/>
-			    				</xs:restriction>
-							</xs:simpleType>
-						<xs:element name="Q2" minOccurs="0" maxOccurs="1"/>
-							<xs:simpleType>
-								<xs:restriction base="xs:integer">
-								    <xs:minInclusive value="1"/>
-								    <xs:maxInclusive value="5"/>
-			    				</xs:restriction>
-							</xs:simpleType>
-						<xs:element name="Q3" minOccurs="0" maxOccurs="1"/>
-							<xs:simpleType>
-								<xs:restriction base="xs:integer">
-								    <xs:minInclusive value="1"/>
-								    <xs:maxInclusive value="5"/>
-			    				</xs:restriction>
-							</xs:simpleType>
-						<xs:element name="Q4" minOccurs="0" maxOccurs="1"/>
-							<xs:simpleType>
-								<xs:restriction base="xs:integer">
-								    <xs:minInclusive value="1"/>
-								    <xs:maxInclusive value="5"/>
-			    				</xs:restriction>
-							</xs:simpleType>
-						<xs:element name="Q5" minOccurs="0" maxOccurs="1"/>
-							<xs:simpleType>
-								<xs:restriction base="xs:integer">
-								    <xs:minInclusive value="1"/>
-								    <xs:maxInclusive value="5"/>
-			    				</xs:restriction>
-							</xs:simpleType>
+						<xs:element name="Q" minOccurs="0" maxOccurs="5">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ID" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+									<xs:element name="Value" minOccurs="0" maxOccurs="1">
+										<xs:simpleType>
+											<xs:restriction base="xs:integer">
+											    <xs:minInclusive value="1"/>
+											    <xs:maxInclusive value="5"/>
+						    				</xs:restriction>
+					    				</xs:simpleType>
+				    				</xs:element>
+			    				</xs:sequence>
+							</xs:complexType>
+						</xs:element>
 						<xs:element name="Resolution" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="Contact_Me" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
