@@ -6,10 +6,10 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import java.sql.*;
 
-public class Footprint implements Parser {
-	
+public class Footprints implements Parser {
+
 	@Override
-	private boolean Validate(String file) {
+	public boolean validate(String file) {
 		String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
 		String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
 		String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
@@ -38,16 +38,21 @@ public class Footprint implements Parser {
 	}
 
 	@Override
-	private static String getFieldFile() {
+	public String getFieldFile() {
 		return "FootprintsFields.txt";
 	}
 
 	@Override
-	private ArrayList<Hashtable<Integer, Object>> parse()
-			throws FileNotFoundException, IOException {
+	public ArrayList<Hashtable<Integer, Object>> parse() {
 
 		ArrayList<Hashtable<Integer, Object>> data = new ArrayList<Hashtable<Integer, Object>>();
-		Hashtable<String, Integer> fields = mapNamesField();
+		Hashtable<String, Integer> fields = null;
+		
+		try {
+			fields = mapNamesField();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 
 		// 1. Connect to the Footprints DB ==== IMPOSSIBLE TO DO
 		/********************************************************/
@@ -55,16 +60,14 @@ public class Footprint implements Parser {
 		// 2. Fill the hashtable with the data found === FAKE DATA FOR DEMO
 
 		/* TICKETS */
-		
-		System.out.println("test");
 
 		Hashtable<Integer, Object> ticket1 = new Hashtable<Integer, Object>();
-		ticket1.put(fields.get("mrID"), "7103");
+		ticket1.put(0, "7103");
 		ticket1.put(fields.get("mrPRIORITY"), "1");
 		ticket1.put(fields.get("mrSTATUS"), "Closed");
 		ticket1.put(fields.get("mrUPDATEDATE"), "19/07/2010  11:57:14");
 		ticket1.put(fields.get("mrSUBMITDATE"), "01/11/2007  08:43:09");
-		ticket1.put(fields.get("mrTIMESTAMP"), "0x00000000007BD392");
+		ticket1.put(5, "0x00000000007BD392");
 		ticket1.put(fields.get("Category"), "Accounts");
 		ticket1.put(fields.get("Sub__ucategory"), "NULL");
 		ticket1.put(fields.get("Type__bof__bIssue"), "Incident");
@@ -82,12 +85,12 @@ public class Footprint implements Parser {
 		ticket1.put(fields.get("Submit__bto__bBilling"), "NULL");
 
 		Hashtable<Integer, Object> ticket2 = new Hashtable<Integer, Object>();
-		ticket2.put(fields.get("mrID"), "14603");
+		ticket2.put(0, "14603");
 		ticket2.put(fields.get("mrPRIORITY"), "1");
 		ticket2.put(fields.get("mrSTATUS"), "Closed");
 		ticket2.put(fields.get("mrUPDATEDATE"), "19/07/2010  11:57:14");
 		ticket2.put(fields.get("mrSUBMITDATE"), "13/03/2008  10:14:42");
-		ticket2.put(fields.get("mrTIMESTAMP"), "0x00000000007BD3A6");
+		ticket2.put(5, "0x00000000007BD3A6");
 		ticket2.put(fields.get("Category"), "Software__bDistribution__fELMS");
 		ticket2.put(fields.get("Sub__ucategory"), "Media__bCreation");
 		ticket2.put(fields.get("Type__bof__bIssue"), "Incident");
@@ -105,12 +108,12 @@ public class Footprint implements Parser {
 		ticket2.put(fields.get("Submit__bto__bBilling"), "NULL");
 
 		Hashtable<Integer, Object> ticket3 = new Hashtable<Integer, Object>();
-		ticket3.put(fields.get("mrID"), "15021");
+		ticket3.put(0, "15021");
 		ticket3.put(fields.get("mrPRIORITY"), "1");
 		ticket3.put(fields.get("mrSTATUS"), "_DELETED_");
 		ticket3.put(fields.get("mrUPDATEDATE"), "01/06/2011  11:56:59");
 		ticket3.put(fields.get("mrSUBMITDATE"), "18/03/2008  09:54:06");
-		ticket3.put(fields.get("mrTIMESTAMP"), "0x00000000007BD3A7");
+		ticket3.put(5, "0x00000000007BD3A7");
 		ticket3.put(fields.get("Category"), "Software__bDistribution__fELMS");
 		ticket3.put(fields.get("Sub__ucategory"), "Distributed__bSoftware");
 		ticket3.put(fields.get("Type__bof__bIssue"), "NULL");
@@ -130,59 +133,59 @@ public class Footprint implements Parser {
 		/* HISTORY */
 
 		Hashtable<Integer, Object> history1 = new Hashtable<Integer, Object>();
-		history1.put(fields.get("mrID"), "1");
+		history1.put(21, "1");
 		history1.put(fields.get("mrSEQUENCE"), "1");
 		history1.put(fields.get("mrFIELDNAME"), "mrSTATUS");
 		history1.put(fields.get("mrNEWFIELDVALUE"), "Open");
 		history1.put(fields.get("mrOLDFIELDVALUE"), "");
-		history1.put(fields.get("mrTIMESTAMP"), "12/06/2007  08:43:04");
+		history1.put(26, "12/06/2007  08:43:04");
 
 		Hashtable<Integer, Object> history2 = new Hashtable<Integer, Object>();
-		history2.put(fields.get("mrID"), "1");
+		history2.put(21, "1");
 		history2.put(fields.get("mrSEQUENCE"), "2");
 		history2.put(fields.get("mrFIELDNAME"), "mrSTATUS");
 		history2.put(fields.get("mrNEWFIELDVALUE"), "_DELETED_");
 		history2.put(fields.get("mrOLDFIELDVALUE"), "Open");
-		history2.put(fields.get("mrTIMESTAMP"), "20/07/2007  11:16:49");
+		history2.put(26, "20/07/2007  11:16:49");
 
 		Hashtable<Integer, Object> history3 = new Hashtable<Integer, Object>();
-		history3.put(fields.get("mrID"), "10");
+		history3.put(21, "10");
 		history3.put(fields.get("mrSEQUENCE"), "19");
 		history3.put(fields.get("mrFIELDNAME"), "mrSTATUS");
 		history3.put(fields.get("mrNEWFIELDVALUE"), "Open");
 		history3.put(fields.get("mrOLDFIELDVALUE"), "");
-		history3.put(fields.get("mrTIMESTAMP"), "25/07/2007  19:00:37");
+		history3.put(26, "25/07/2007  19:00:37");
 
 		Hashtable<Integer, Object> history4 = new Hashtable<Integer, Object>();
-		history4.put(fields.get("mrID"), "10");
+		history4.put(21, "10");
 		history4.put(fields.get("mrSEQUENCE"), "20");
 		history4.put(fields.get("mrFIELDNAME"), "mrSTATUS");
 		history4.put(fields.get("mrNEWFIELDVALUE"), "_DELETED_");
 		history4.put(fields.get("mrOLDFIELDVALUE"), "Open");
-		history4.put(fields.get("mrTIMESTAMP"), "25/07/2007  19:01:11");
+		history4.put(26, "25/07/2007  19:01:11");
 
 		/* TIME TRACKING */
 
 		Hashtable<Integer, Object> timetracking1 = new Hashtable<Integer, Object>();
-		timetracking1.put(fields.get("mrID"), "43863");
+		timetracking1.put(27, "43863");
 		timetracking1.put(fields.get("mrGENERATION"), "1");
 		timetracking1.put(fields.get("mrTIMESPENT"), "15m");
 		timetracking1.put(fields.get("mrTIMEDATE"), "02/07/2009  13:12:58");
 
 		Hashtable<Integer, Object> timetracking2 = new Hashtable<Integer, Object>();
-		timetracking2.put(fields.get("mrID"), "44009");
+		timetracking2.put(27, "44009");
 		timetracking2.put(fields.get("mrGENERATION"), "2");
 		timetracking2.put(fields.get("mrTIMESPENT"), "15m");
 		timetracking2.put(fields.get("mrTIMEDATE"), "07/07/2009  11:21:13");
 
 		Hashtable<Integer, Object> timetracking3 = new Hashtable<Integer, Object>();
-		timetracking3.put(fields.get("mrID"), "44545");
+		timetracking3.put(27, "44545");
 		timetracking3.put(fields.get("mrGENERATION"), "1");
 		timetracking3.put(fields.get("mrTIMESPENT"), "1800m");
 		timetracking3.put(fields.get("mrTIMEDATE"), "15/07/2009  17:01:05");
 
 		Hashtable<Integer, Object> timetracking4 = new Hashtable<Integer, Object>();
-		timetracking4.put(fields.get("mrID"), "45677");
+		timetracking4.put(27, "45677");
 		timetracking4.put(fields.get("mrGENERATION"), "3");
 		timetracking4.put(fields.get("mrTIMESPENT"), "5m");
 		timetracking4.put(fields.get("mrTIMEDATE"), "10/08/2009  16:15:27");
@@ -205,7 +208,7 @@ public class Footprint implements Parser {
 		return data;
 	}
 
-	private static Hashtable<String, Integer> mapNamesField()
+	private Hashtable<String, Integer> mapNamesField()
 			throws FileNotFoundException, IOException {
 		BufferedReader in;
 		String line;
