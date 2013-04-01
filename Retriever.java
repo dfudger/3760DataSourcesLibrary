@@ -61,10 +61,10 @@ public class Retriever {
 			xml = "Other Exception";
 		}
 		
-		/* if (sources.get(source).validate(xml)) {
+		if (sources.get(source).validate(xml)) {
 			return xml;
-		} */
+		}
 		
-		return xml;
+		return null;
 	}
 }
