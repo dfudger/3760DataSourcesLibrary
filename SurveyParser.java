@@ -1,7 +1,14 @@
 import java.io.BufferedReader; 
 import java.io.FileReader;
+import java.io.BufferedWriter; 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.io.File;
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.*;
 
 public class SurveyParser implements Parser {
 	public ArrayList<Hashtable<Integer, Object>> parse() {
@@ -16,12 +23,20 @@ public class SurveyParser implements Parser {
 
 			while ((line = br.readLine()) != null) {
 				lines += 1;
+				tokens = 0;
 				Hashtable<Integer, Object> table = new Hashtable<Integer, Object>();
 
 				token = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
 
 				for (int i = 0; i < token.length; i++) {
-					table.put(i, token[i]);
+					if (i != 10) {
+						if (token[i].trim().equals("TRUE") || token[i].trim().equals("FALSE")) {
+							table.put(tokens, token[i].toLowerCase());
+						} else {
+							table.put(tokens, token[i]);
+						}
+						tokens += 1;
+					}
 				}
 
 				list.add(table);
@@ -39,7 +54,18 @@ public class SurveyParser implements Parser {
 	}
 
 	public boolean validate(String xml) {
-		return true;
+		Source xmlFile = new StreamSource(new File("hdi.xml"));
+		try {
+			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			Schema schema = schemaFactory.newSchema(new File("hdi.xsd"));
+			Validator validator = schema.newValidator();
+		  	validator.validate(xmlFile);
+		  	return true;
+		} catch (Exception e) {
+			System.out.println(xmlFile.getSystemId() + " is NOT valid");
+  			System.out.println("Reason: " + e.getLocalizedMessage());
+		  	return false;
+		}
 	}
 
 	public String getFieldFile() {
@@ -49,9 +75,14 @@ public class SurveyParser implements Parser {
 	public static void main(String[] args) {
 		SurveyParser parser = new SurveyParser();
 		ArrayList<Hashtable<Integer, Object>> list = parser.parse();
+
 		DTOFactory factory = new DTOFactory();
 		try {
-			System.out.println(factory.makeDTO(list, parser.getFieldFile()));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("hdi.xml"));
+			String output = factory.makeDTO(list, parser.getFieldFile());
+			bw.write(output, 0, output.length());
+			bw.close();
+			System.out.println(parser.validate("hdi.xml"));
 		} catch (Exception e) {
 			System.err.println("Factory reported error");
 			System.exit(1);
