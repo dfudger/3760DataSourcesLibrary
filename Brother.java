@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.StringReader;
+import java.net.URL;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Schema;
 import javax.xml.XMLConstants;
@@ -11,8 +13,6 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Validator;
 
 public class Brother implements Parser {
-	//String location = "/home/cis3760/files/";
-	String location = "/Users/mattstark/Documents/Project/files/";
 	public ArrayList<Hashtable<Integer, Object>> parse() {
 		/* Open or access internet.xml */
 		/* parse it for data*/
@@ -20,7 +20,7 @@ public class Brother implements Parser {
 		/* return the ArrayList with the data inside*/
 
 		/* USE THIS FOR CONNECTING TO SERVER - ALSO, SWAP location VARIABLE ABOVE*/
-		/*String[]  cmd = { "/bin/sh", "-c", "scp cis3760@general.uoguelph.ca:/users/windtalk/internet.xml ~/files/" };
+		/*String[]  cmd = { "/bin/sh", "-c", "scp cis3760@general.uoguelph.ca:/users/windtalk/internet.xml ~" };
 		String[] cmdDummy = { "ls" };
     	Process proc;
     	int     ch;
@@ -34,12 +34,13 @@ public class Brother implements Parser {
 
         BufferedReader in = null;
         try{
-        	in = new BufferedReader(new FileReader(location + "internet.xml"));
+        	in = new BufferedReader(new FileReader("internet.xml"));
         } catch(FileNotFoundException e){
         	System.out.println("File not found");
         	return null;
         }
 		String line;
+		String prevLine = null;
 		int rraCount = 0;
 		String database = "";
 		ArrayList<Hashtable<Integer, Object>> retVal;
@@ -57,9 +58,10 @@ public class Brother implements Parser {
 							System.out.println(line);
 							while ((line = in.readLine()) != null) {
 								if (line.trim().equals("</database>")) {
+									database = addTimestamp(prevLine);
 									break;
 								}
-								database = database + line;
+								prevLine = line;
 							}
 							current.put(rraCount - 1, database);
 							break;
@@ -77,14 +79,26 @@ public class Brother implements Parser {
 
 	}
 
+	public String addTimestamp(String line){
+		line = line.replace("<!--", "<timestamp>");
+		line = line.replace("-->", "</timestamp>");
+		return line;
+	}
+
 	public boolean validate(String xml) {
-		try{
-			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = factory.newSchema(new StreamSource(location + "bigbrother.xsd"));
-			Validator validator = schema.newValidator();
-			validator.validate(new StreamSource(xml));
+		try {
+			StringReader reader = new StringReader(xml);  
+			URL xsdResource = getClass().getResource("bigbrother.xsd");  
+			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);  
+			Schema schema = factory.newSchema(xsdResource);  
+
+			Validator val = schema.newValidator();  
+			val.validate(new StreamSource(reader));
 			return true;
-		}catch (Exception e){
+
+		} catch (Exception e) {
+			System.out.println("The xml string is NOT valid");
+			System.out.println("Reason: " + e.getLocalizedMessage());
 			return false;
 		}
 	}
@@ -98,10 +112,14 @@ public class Brother implements Parser {
 		Brother big = new Brother();
 		System.out.println("Start");
 		data = big.parse();
-		
+		String dto = null;
+
 		DTOFactory factory = new DTOFactory();
 		try{
-			System.out.println(factory.makeDTO(data, big.getFieldFile()));
+			dto = factory.makeDTO(data, big.getFieldFile());
+			if(big.validate(dto)){
+				System.out.println(dto);
+			}
 		}catch(Exception e){
 			System.out.println("Issues making the DTO");
 		}

@@ -10,16 +10,11 @@
                         <xs:element name="Average5m" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -29,16 +24,11 @@
                         <xs:element name="Average30m" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -48,16 +38,11 @@
                         <xs:element name="Average2h" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -67,16 +52,11 @@
                         <xs:element name="Average1d" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -86,16 +66,11 @@
                         <xs:element name="Max5m" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -105,16 +80,11 @@
                         <xs:element name="Max30m" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -124,16 +94,11 @@
                         <xs:element name="Max2h" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
@@ -143,16 +108,11 @@
                         <xs:element name="Max1d" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="row" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:sequence>
-                                                            <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-                                                        </xs:sequence>
-                                                    </xs:complexType>
-                                                </xs:element>
+                                                <xs:element name="v" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
