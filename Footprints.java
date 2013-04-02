@@ -17,7 +17,6 @@ public class Footprints implements Parser {
 	@Override
 	public boolean validate(String xml) {
 		try {
-			
 			StringReader reader = new StringReader(xml);  
 			URL xsdResource = getClass().getResource("footprint.xsd");  
 			SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");  
@@ -25,9 +24,8 @@ public class Footprints implements Parser {
 			
 			Validator val = schema.newValidator();  
 			val.validate(new StreamSource(reader));
-			
-			System.out.println("The xml string is valid");
 			return true;
+			
 		} catch (Exception e) {
 			System.out.println("The xml string is NOT valid");
 			System.out.println("Reason: " + e.getLocalizedMessage());
