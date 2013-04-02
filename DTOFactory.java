@@ -6,20 +6,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Collections;
 
 public class DTOFactory {
 	private static Hashtable<Integer, String> mapFieldNames(String fieldFile) throws FileNotFoundException, IOException {
 		BufferedReader in;		
 		String line;
 		Hashtable<Integer, String> retVal;
-		
-		System.out.println(fieldFile);
+
 		in = new BufferedReader(new FileReader(fieldFile));
 		retVal = new Hashtable<Integer, String>();
-		
+
 		while ((line = in.readLine()) != null) {
 			String tokens[] = line.split(" ");
-			
+
 			if (tokens.length == 1) {
 				continue;
 			}
@@ -27,22 +28,22 @@ public class DTOFactory {
 				retVal.put(Integer.parseInt(tokens[0]), tokens[1]);
 			}
 		}
-		
+
 		return retVal;
 	}
-	
+
 	private static Hashtable<Integer, String> mapObjectNames(String fieldFile) throws FileNotFoundException, IOException {
 		BufferedReader in;		
 		String line;
 		Hashtable<Integer, String> retVal;
-		
+
 		in = new BufferedReader(new FileReader(fieldFile));
 		retVal = new Hashtable<Integer, String>();
 		String objectName = "";
 
 		while ((line = in.readLine()) != null) {
 			String tokens[] = line.split(" ");
-			
+
 			if (tokens.length == 1) {
 				objectName = tokens[0];
 			}
@@ -50,15 +51,15 @@ public class DTOFactory {
 				retVal.put(Integer.parseInt(tokens[0]), objectName);
 			}
 		}
-		
+
 		return retVal;
 	}
-	
+
 	public static String makeDTO(ArrayList<Hashtable<Integer, Object>> records, String fieldFile) throws FileNotFoundException, IOException {
 		Hashtable<Integer, String> fieldNames;
 		Hashtable<Integer, String> objectNames;
 		String DTO;
-		
+
 		fieldNames = DTOFactory.mapFieldNames(fieldFile);
 		objectNames = DTOFactory.mapObjectNames(fieldFile);
 		DTO = "<DTO>\n";
@@ -70,25 +71,27 @@ public class DTOFactory {
 			
 			record = records.get(i);
 			firstField = record.keySet().iterator().next();
+			
+			List<Integer> v = new ArrayList<Integer>(record.keySet());
+		   	Collections.sort(v);
+			
 			objectName = objectNames.get(firstField);
 			
-			DTO = DTO + ("\t<" + objectName + ">\n");
-			
-			Iterator iterator = record.keySet().iterator();
-			while (iterator.hasNext()) {
-				int fieldNumber = (Integer)iterator.next();
+			DTO = DTO + "\t<" + objectName + ">\n";
+
+			for(Integer fieldNumber : v){
 				String fieldName = fieldNames.get(fieldNumber);
-				
-				DTO = DTO + ("\t\t<" + fieldName + ">\n");
-				DTO = DTO + ("\t\t\t" + record.get(fieldNumber).toString() + "\n");
-				DTO = DTO + ("\t\t</" + fieldName + ">\n");
+
+				DTO = DTO + "\t\t<" + fieldName + ">";
+				DTO = DTO + record.get(fieldNumber).toString();
+				DTO = DTO + "</" + fieldName + ">\n";
 			}
-			
-			DTO = DTO + ("\t</" + objectName + ">\n");
+
+			DTO = DTO + "\t</" + objectName + ">\n";
 		}
 		
-		DTO = DTO + ("</DTO>");
-		
+		DTO = DTO + "</DTO>";
+
 		return DTO;
 	}
 }
