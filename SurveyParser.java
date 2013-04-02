@@ -30,10 +30,12 @@ public class SurveyParser implements Parser {
 
 				for (int i = 0; i < token.length; i++) {
 					if (i != 10) {
-						if (token[i].trim().equals("TRUE") || token[i].trim().equals("FALSE")) {
-							table.put(tokens, token[i].toLowerCase());
-						} else {
-							table.put(tokens, token[i]);
+						if (!token[i].trim().equals("")) {
+							if (token[i].trim().equals("TRUE") || token[i].trim().equals("FALSE")) {
+								table.put(tokens, token[i].toLowerCase());
+							} else {
+								table.put(tokens, token[i]);
+							}
 						}
 						tokens += 1;
 					}
