@@ -1,103 +1,127 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<footprints xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="footprint.xsd">
-
+<DTO>
 	<ticket>
-		<mrID></mrID>
-		<mrREF_TO_AB></mrREF_TO_AB>
-		<mrREF_TO_MR></mrREF_TO_MR>
-		<mrTITLE></mrTITLE>
-		<mrPRIORITY></mrPRIORITY>
-		<mrSTATUS></mrSTATUS>
-		<mrDESCRIPTION></mrDESCRIPTION>
-		<mrALLDESCRIPTIONS></mrALLDESCRIPTIONS>
-		<mrASSIGNEES></mrASSIGNEES>
-		<mrATTACHMENTS></mrATTACHMENTS>
-		<mrUPDATEDATE></mrUPDATEDATE>
-		<mrSUBMITTER></mrSUBMITTER>
-		<mrSUBMITDATE></mrSUBMITDATE>
-		<mrPOPULARITY></mrPOPULARITY>
-		<mrUNASSIGNED></mrUNASSIGNED>
-		<mrTIMESTAMP></mrTIMESTAMP>
-		<mrURGENT></mrURGENT>
-		<mrSUBTASK_ORDER></mrSUBTASK_ORDER>
-		<mrREF_TO_MRX></mrREF_TO_MRX>
-		<mrESCALATEDBY></mrESCALATEDBY>
-		<Problem__bType></Problem__bType>
-		<Issue__bType></Issue__bType>
-		<Symptom></Symptom>
-		<Error__bMessage></Error__bMessage>
-		<Follow__bUp__bDate></Follow__bUp__bDate>
-		<Work__bScheduled></Work__bScheduled>
-		<Work__bScheduled__bLink></Work__bScheduled__bLink>
-		<Submission></Submission>
-		<IP__bAddress></IP__bAddress>
-		<Memory></Memory>
-		<Hard__bDisk__bSize></Hard__bDisk__bSize>
-		<CPU__bType></CPU__bType>
-		<CPU__bSpeed></CPU__bSpeed>
-		<OS></OS>
-		<Machine__bType></Machine__bType>
-		<Manufacturer></Manufacturer>
-		<Serial__bNumber></Serial__bNumber>
-		<mrSOLUTION_TYPE></mrSOLUTION_TYPE>
-		<SERVICE_REQUEST_CI_TYPE_ID></SERVICE_REQUEST_CI_TYPE_ID>
-		<mrNAMP_ID></mrNAMP_ID>
+		<mrID>7103</mrID>
+		<mrPRIORITY>1</mrPRIORITY>
+		<mrSTATUS>Closed</mrSTATUS>
+		<mrUPDATEDATE>19/07/2010  11:57:14</mrUPDATEDATE>
+		<mrSUBMITDATE>01/11/2007  08:43:09</mrSUBMITDATE>
+		<mrTIMESTAMP>0x00000000007BD392</mrTIMESTAMP>
+		<Category>Accounts</Category>
+		<Sub__ucategory>NULL</Sub__ucategory>
+		<Type__bof__bIssue>Incident</Type__bof__bIssue>
+		<Billing__bCode>NULL</Billing__bCode>
+		<Source>Phone</Source>
+		<Closure__bCode>NULL</Closure__bCode>
+		<Impact>Individual</Impact>
+		<Billing__bEstimate>NULL</Billing__bEstimate>
+		<Type__bof__bwork__border>NULL</Type__bof__bwork__border>
+		<Sub__ucategory__bII>NULL</Sub__ucategory__bII>
+		<Software__bProduct>NULL</Software__bProduct>
+		<Due__bDate>NULL</Due__bDate>
+		<Student__bLocation>NULL</Student__bLocation>
+		<Billing__bRequired>NULL</Billing__bRequired>
+		<Submit__bto__bBilling>NULL</Submit__bto__bBilling>
 	</ticket>
-
+	<ticket>
+		<mrID>14603</mrID>
+		<mrPRIORITY>1</mrPRIORITY>
+		<mrSTATUS>Closed</mrSTATUS>
+		<mrUPDATEDATE>19/07/2010  11:57:14</mrUPDATEDATE>
+		<mrSUBMITDATE>13/03/2008  10:14:42</mrSUBMITDATE>
+		<mrTIMESTAMP>0x00000000007BD3A6</mrTIMESTAMP>
+		<Category>Software__bDistribution__fELMS</Category>
+		<Sub__ucategory>Media__bCreation</Sub__ucategory>
+		<Type__bof__bIssue>Incident</Type__bof__bIssue>
+		<Billing__bCode>NULL</Billing__bCode>
+		<Source>Email</Source>
+		<Closure__bCode>Solved</Closure__bCode>
+		<Impact>Individual</Impact>
+		<Billing__bEstimate>NULL</Billing__bEstimate>
+		<Type__bof__bwork__border>NULL</Type__bof__bwork__border>
+		<Sub__ucategory__bII>NULL</Sub__ucategory__bII>
+		<Software__bProduct>NULL</Software__bProduct>
+		<Due__bDate>NULL</Due__bDate>
+		<Student__bLocation>IT__bHelp__bDesk</Student__bLocation>
+		<Billing__bRequired>NULL</Billing__bRequired>
+		<Submit__bto__bBilling>NULL</Submit__bto__bBilling>
+	</ticket>
+	<ticket>
+		<mrID>15021</mrID>
+		<mrPRIORITY>1</mrPRIORITY>
+		<mrSTATUS>_DELETED_</mrSTATUS>
+		<mrUPDATEDATE>01/06/2011  11:56:59</mrUPDATEDATE>
+		<mrSUBMITDATE>18/03/2008  09:54:06</mrSUBMITDATE>
+		<mrTIMESTAMP>0x00000000007BD3A7</mrTIMESTAMP>
+		<Category>Software__bDistribution__fELMS</Category>
+		<Sub__ucategory>Distributed__bSoftware</Sub__ucategory>
+		<Type__bof__bIssue>NULL</Type__bof__bIssue>
+		<Billing__bCode>NULL</Billing__bCode>
+		<Source>NULL</Source>
+		<Closure__bCode>NULL</Closure__bCode>
+		<Impact>Individual</Impact>
+		<Billing__bEstimate>NULL</Billing__bEstimate>
+		<Type__bof__bwork__border>NULL</Type__bof__bwork__border>
+		<Sub__ucategory__bII>NULL</Sub__ucategory__bII>
+		<Software__bProduct>SAS</Software__bProduct>
+		<Due__bDate>NULL</Due__bDate>
+		<Student__bLocation>NULL</Student__bLocation>
+		<Billing__bRequired>NULL</Billing__bRequired>
+		<Submit__bto__bBilling>NULL</Submit__bto__bBilling>
+	</ticket>
 	<ticket_history>
-		<mrID></mrID>
-		<mrREF_TO_AB></mrREF_TO_AB>
-		<mrREF_TO_MR></mrREF_TO_MR>
-		<mrTITLE></mrTITLE>
-		<mrPRIORITY></mrPRIORITY>
-		<mrSTATUS></mrSTATUS>
-		<mrDESCRIPTION></mrDESCRIPTION>
-		<mrALLDESCRIPTIONS></mrALLDESCRIPTIONS>
-		<mrASSIGNEES></mrASSIGNEES>
-		<mrATTACHMENTS></mrATTACHMENTS>
-		<mrUPDATEDATE></mrUPDATEDATE>
-		<mrSUBMITTER></mrSUBMITTER>
-		<mrSUBMITDATE></mrSUBMITDATE>
-		<mrPOPULARITY></mrPOPULARITY>
-		<mrUNASSIGNED></mrUNASSIGNED>
-		<mrTIMESTAMP></mrTIMESTAMP>
-		<mrURGENT></mrURGENT>
-		<mrSUBTASK_ORDER></mrSUBTASK_ORDER>
-		<mrREF_TO_MRX></mrREF_TO_MRX>
-		<mrESCALATEDBY></mrESCALATEDBY>
-		<Problem__bType></Problem__bType>
-		<Issue__bType></Issue__bType>
-		<Symptom></Symptom>
-		<Error__bMessage></Error__bMessage>
-		<Follow__bUp__bDate></Follow__bUp__bDate>
-		<Work__bScheduled></Work__bScheduled>
-		<Work__bScheduled__bLink></Work__bScheduled__bLink>
-		<Submission></Submission>
-		<IP__bAddress></IP__bAddress>
-		<Memory></Memory>
-		<Hard__bDisk__bSize></Hard__bDisk__bSize>
-		<CPU__bType></CPU__bType>
-		<CPU__bSpeed></CPU__bSpeed>
-		<OS></OS>
-		<Machine__bType></Machine__bType>
-		<Manufacturer></Manufacturer>
-		<Serial__bNumber></Serial__bNumber>
-		<mrSOLUTION_TYPE></mrSOLUTION_TYPE>
-		<SERVICE_REQUEST_CI_TYPE_ID></SERVICE_REQUEST_CI_TYPE_ID>
-		<mrNAMP_ID></mrNAMP_ID>
+		<mrID>1</mrID>
+		<mrSEQUENCE>1</mrSEQUENCE>
+		<mrFIELDNAME>mrSTATUS</mrFIELDNAME>
+		<mrNEWFIELDVALUE>Open</mrNEWFIELDVALUE>
+		<mrOLDFIELDVALUE></mrOLDFIELDVALUE>
+		<mrTIMESTAMP>12/06/2007  08:43:04</mrTIMESTAMP>
 	</ticket_history>
-
+	<ticket_history>
+		<mrID>1</mrID>
+		<mrSEQUENCE>2</mrSEQUENCE>
+		<mrFIELDNAME>mrSTATUS</mrFIELDNAME>
+		<mrNEWFIELDVALUE>_DELETED_</mrNEWFIELDVALUE>
+		<mrOLDFIELDVALUE>Open</mrOLDFIELDVALUE>
+		<mrTIMESTAMP>20/07/2007  11:16:49</mrTIMESTAMP>
+	</ticket_history>
+	<ticket_history>
+		<mrID>10</mrID>
+		<mrSEQUENCE>19</mrSEQUENCE>
+		<mrFIELDNAME>mrSTATUS</mrFIELDNAME>
+		<mrNEWFIELDVALUE>Open</mrNEWFIELDVALUE>
+		<mrOLDFIELDVALUE></mrOLDFIELDVALUE>
+		<mrTIMESTAMP>25/07/2007  19:00:37</mrTIMESTAMP>
+	</ticket_history>
+	<ticket_history>
+		<mrID>10</mrID>
+		<mrSEQUENCE>20</mrSEQUENCE>
+		<mrFIELDNAME>mrSTATUS</mrFIELDNAME>
+		<mrNEWFIELDVALUE>_DELETED_</mrNEWFIELDVALUE>
+		<mrOLDFIELDVALUE>Open</mrOLDFIELDVALUE>
+		<mrTIMESTAMP>25/07/2007  19:01:11</mrTIMESTAMP>
+	</ticket_history>
 	<timetracking>
-		<mrID></mrID>
-		<mrGENERATION></mrGENERATION>
-		<mrTIMESPENT></mrTIMESPENT>
-		<mrRATE></mrRATE>
-		<mrTIMEDATE></mrTIMEDATE>
-		<mrTIMEUSER></mrTIMEUSER>
-		<mrRATEDESC></mrRATEDESC>
-		<mrCOMMENT></mrCOMMENT>
+		<mrID>43863</mrID>
+		<mrGENERATION>1</mrGENERATION>
+		<mrTIMESPENT>15m</mrTIMESPENT>
+		<mrTIMEDATE>02/07/2009  13:12:58</mrTIMEDATE>
 	</timetracking>
-
-</footprints>
+	<timetracking>
+		<mrID>44009</mrID>
+		<mrGENERATION>2</mrGENERATION>
+		<mrTIMESPENT>15m</mrTIMESPENT>
+		<mrTIMEDATE>07/07/2009  11:21:13</mrTIMEDATE>
+	</timetracking>
+	<timetracking>
+		<mrID>44545</mrID>
+		<mrGENERATION>1</mrGENERATION>
+		<mrTIMESPENT>1800m</mrTIMESPENT>
+		<mrTIMEDATE>15/07/2009  17:01:05</mrTIMEDATE>
+	</timetracking>
+	<timetracking>
+		<mrID>45677</mrID>
+		<mrGENERATION>3</mrGENERATION>
+		<mrTIMESPENT>5m</mrTIMESPENT>
+		<mrTIMEDATE>10/08/2009  16:15:27</mrTIMEDATE>
+	</timetracking>
+</DTO>
