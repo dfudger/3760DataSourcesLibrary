@@ -52,10 +52,8 @@ public class Brother implements Parser {
 				if (line.trim().equals("<rra>")) {
 					rraCount++;
 					database = "";
-					System.out.println(line);
 					while ((line = in.readLine()) != null) {
 						if (line.trim().equals("<database>")) {
-							System.out.println(line);
 							while ((line = in.readLine()) != null) {
 								if (line.trim().equals("</database>")) {
 									database = addTimestamp(prevLine);
