@@ -1,40 +1,38 @@
 import java.util.*;
+import java.util.logging.XMLFormatter;
 import java.io.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.validation.*;
+import java.net.URL;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
 
 import java.sql.*;
 
 public class Footprints implements Parser {
 
 	@Override
-	public boolean validate(String file) {
-		String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
-		String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
-		String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
-
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setNamespaceAware(true);
-		factory.setValidating(true);
-
-		factory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
-
-		// Set the schema file
-		factory.setAttribute(JAXP_SCHEMA_SOURCE, new File("footprints.xsd"));
-
+	public boolean validate(String xml) {
 		try {
-			DocumentBuilder parser = factory.newDocumentBuilder();
-
-			// Parse the file. If errors found, they will be printed.
-			parser.parse("footprints.xml");
-
+			
+			StringReader reader = new StringReader(xml);  
+			URL xsdResource = getClass().getResource("footprint.xsd");  
+			SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");  
+			Schema schema = factory.newSchema(xsdResource);  
+			
+			Validator val = schema.newValidator();  
+			val.validate(new StreamSource(reader));
+			
+			System.out.println("The xml string is valid");
+			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("The xml string is NOT valid");
+			System.out.println("Reason: " + e.getLocalizedMessage());
 			return false;
 		}
-
-		return true;
 	}
 
 	@Override
@@ -150,10 +148,10 @@ public class Footprints implements Parser {
 
 		Hashtable<Integer, Object> history3 = new Hashtable<Integer, Object>();
 		history3.put(21, "10");
-		history3.put(fields.get("mrSEQUENCE"), "19");
-		history3.put(fields.get("mrFIELDNAME"), "mrSTATUS");
-		history3.put(fields.get("mrNEWFIELDVALUE"), "Open");
-		history3.put(fields.get("mrOLDFIELDVALUE"), "");
+		history3.put(22, "19");
+		history3.put(23, "mrSTATUS");
+		history3.put(24, "Open");
+		history3.put(25, "");
 		history3.put(26, "25/07/2007  19:00:37");
 
 		Hashtable<Integer, Object> history4 = new Hashtable<Integer, Object>();
