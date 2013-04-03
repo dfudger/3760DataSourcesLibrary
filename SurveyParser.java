@@ -37,7 +37,7 @@ public class SurveyParser implements Parser {
 								table.put(tokens, token[i]);
 							}
 						} else {
-							table.put(tokens, "null");
+							table.put(tokens, "");
 						}
 						tokens += 1;
 					}
@@ -47,10 +47,14 @@ public class SurveyParser implements Parser {
 				if (table.size() > 0) {
 					list.add(table);
 				}
+
+				if (lines > 1000) {
+					break;
+				}
 			}
 		} catch (Exception e) {
 			System.err.println("Parsing Error: " + e.getMessage());
-			System.exit(1);
+			return null;
 		}
 
 		return list;
