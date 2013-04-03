@@ -13,40 +13,32 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Validator;
 
 public class Brother implements Parser {
+	private Integer fileCount = 0;
 	public ArrayList<Hashtable<Integer, Object>> parse() {
 		/* Open or access internet.xml */
 		/* parse it for data*/
 		/* store the info found in the database tags (as a string) into the Hashtable as an object*/
 		/* return the ArrayList with the data inside*/
-
-		/* USE THIS FOR CONNECTING TO SERVER - ALSO, SWAP location VARIABLE ABOVE*/
-		/*String[]  cmd = { "/bin/sh", "-c", "scp cis3760@general.uoguelph.ca:/users/windtalk/internet.xml ~" };
-		String[] cmdDummy = { "ls" };
-    	Process proc;
-    	int     ch;
-
-        try {
-			proc = Runtime.getRuntime().exec(cmd);
-			proc.waitFor();
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }*/
-
-        BufferedReader in = null;
+		BufferedReader in = null;
+		String line;
+		String prevLine = null;
+		int rraCount = 0;
+		String database = "";
+		ArrayList<Hashtable<Integer, Object>> retVal = new ArrayList<Hashtable<Integer, Object>>();
+		Hashtable<Integer, Object> current = new Hashtable<Integer, Object>();
+		fileCount = 0;
+		getFile();
+		if(fileCount > 25){
+			return retVal;
+		}
+        
         try{
         	in = new BufferedReader(new FileReader("internet.xml"));
         } catch(FileNotFoundException e){
         	System.out.println("File not found");
         	return null;
         }
-		String line;
-		String prevLine = null;
-		int rraCount = 0;
-		String database = "";
-		ArrayList<Hashtable<Integer, Object>> retVal;
-		Hashtable<Integer, Object> current = new Hashtable<Integer, Object>();
 
-		retVal = new ArrayList<Hashtable<Integer, Object>>();
 		try{
 			while ((line = in.readLine()) != null) {
 				if (line.trim().equals("<rra>")) {
@@ -77,7 +69,30 @@ public class Brother implements Parser {
 
 	}
 
-	public String addTimestamp(String line){
+	private void getFile(){
+		fileCount++;
+		if(fileCount > 25){
+			return;
+		}
+		String[]  cmd = { "/bin/sh", "-c", "scp cis3760@general.uoguelph.ca:/users/windtalk/internet.xml ~" };
+    	Process proc;
+
+        try {
+			proc = Runtime.getRuntime().exec(cmd);
+			Worker worker = new Worker(proc);
+  			worker.start();
+  			worker.join(3000);
+  			if(worker.exit == false){
+  				worker.interrupt();
+  				proc.destroy();
+  				getFile();
+  			}
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+	}
+
+	private String addTimestamp(String line){
 		line = line.replace("<!--", "<timestamp>");
 		line = line.replace("-->", "</timestamp>");
 		return line;
@@ -123,4 +138,21 @@ public class Brother implements Parser {
 		}
 		System.out.println("Done");
 	}
+
+	private static class Worker extends Thread {
+		private final Process process;
+		private boolean exit = false;
+		private Worker(Process process) {
+			this.process = process;
+		}
+		public void run() {
+			try { 
+				process.waitFor();
+				exit = true;
+			} catch (InterruptedException ignore) {
+				return;
+			}
+		}  
+	}
 }
+
