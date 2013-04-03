@@ -1,14 +1,14 @@
-import java.io.BufferedReader; 
-import java.io.FileReader;
-import java.io.BufferedWriter; 
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.io.File;
+import java.util.*;
+import java.util.logging.XMLFormatter;
+import java.io.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.validation.*;
+import java.net.URL;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.*;
 
 public class SurveyParser implements Parser {
 	public ArrayList<Hashtable<Integer, Object>> parse() {
@@ -26,25 +26,26 @@ public class SurveyParser implements Parser {
 				tokens = 0;
 				Hashtable<Integer, Object> table = new Hashtable<Integer, Object>();
 
-				token = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+				token = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
 				for (int i = 0; i < token.length; i++) {
 					if (i != 10) {
-						if (!token[i].trim().equals("")) {
+						if (!token[i].equals("")) {
 							if (token[i].trim().equals("TRUE") || token[i].trim().equals("FALSE")) {
 								table.put(tokens, token[i].toLowerCase());
 							} else {
 								table.put(tokens, token[i]);
 							}
+						} else {
+							table.put(tokens, "null");
 						}
 						tokens += 1;
 					}
 				}
 
-				list.add(table);
-
-				if (lines > 5) {
-					break;
+				System.out.println(table.size() + "  " + line.toString());
+				if (table.size() > 0) {
+					list.add(table);
 				}
 			}
 		} catch (Exception e) {
@@ -56,17 +57,20 @@ public class SurveyParser implements Parser {
 	}
 
 	public boolean validate(String xml) {
-		Source xmlFile = new StreamSource(new File("hdi.xml"));
 		try {
-			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = schemaFactory.newSchema(new File("hdi.xsd"));
-			Validator validator = schema.newValidator();
-		  	validator.validate(xmlFile);
-		  	return true;
+			StringReader reader = new StringReader(xml);  
+			URL xsdResource = getClass().getResource("hdi.xsd");  
+			SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");  
+			Schema schema = factory.newSchema(xsdResource);  
+
+			Validator val = schema.newValidator();  
+			val.validate(new StreamSource(reader));
+			return true;
+
 		} catch (Exception e) {
-			System.out.println(xmlFile.getSystemId() + " is NOT valid");
-  			System.out.println("Reason: " + e.getLocalizedMessage());
-		  	return false;
+			System.out.println("The xml string is NOT valid");
+			System.out.println("Reason: " + e.getLocalizedMessage());
+			return false;
 		}
 	}
 
@@ -78,13 +82,12 @@ public class SurveyParser implements Parser {
 		SurveyParser parser = new SurveyParser();
 		ArrayList<Hashtable<Integer, Object>> list = parser.parse();
 
-		DTOFactory factory = new DTOFactory();
 		try {
+			Retriever r = new Retriever();
 			BufferedWriter bw = new BufferedWriter(new FileWriter("hdi.xml"));
-			String output = factory.makeDTO(list, parser.getFieldFile());
+			String output = r.retrieve(Sources.HDI, null);
 			bw.write(output, 0, output.length());
 			bw.close();
-			System.out.println(parser.validate("hdi.xml"));
 		} catch (Exception e) {
 			System.err.println("Factory reported error");
 			System.exit(1);
