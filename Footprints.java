@@ -12,11 +12,22 @@ import javax.xml.transform.Source;
 
 import java.sql.*;
 
+/**
+ * Concrete class implementing the Parser interface for Footprints data source
+ * @author L.CRIVELLI, M.GARDINER
+ *
+ */
 public class Footprints implements Parser {
 
+	/**
+	 * Validate a given XML string against the Footprints' XML schema (XSD file)
+	 * @param xml Given XML string
+	 * @return True if validation succeeded, false otherwise
+	 */
 	@Override
 	public boolean validate(String xml) {
 		try {
+			
 			StringReader reader = new StringReader(xml);  
 			URL xsdResource = getClass().getResource("footprint.xsd");  
 			SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");  
@@ -24,8 +35,9 @@ public class Footprints implements Parser {
 			
 			Validator val = schema.newValidator();  
 			val.validate(new StreamSource(reader));
-			return true;
 			
+			System.out.println("The xml string is valid");
+			return true;
 		} catch (Exception e) {
 			System.out.println("The xml string is NOT valid");
 			System.out.println("Reason: " + e.getLocalizedMessage());
@@ -33,11 +45,19 @@ public class Footprints implements Parser {
 		}
 	}
 
+	/**
+	 * Returns the Footprints fields enumeration file's name
+	 * @return Fields enumeration file's name
+	 */
 	@Override
 	public String getFieldFile() {
 		return "FootprintsFields.txt";
 	}
 
+	/**
+	 * Returns an array containing all the Footprints data requested by the user
+	 * @return Array of data
+	 */
 	@Override
 	public ArrayList<Hashtable<Integer, Object>> parse() {
 
@@ -204,6 +224,12 @@ public class Footprints implements Parser {
 		return data;
 	}
 
+	/**
+	 * Maps all the fields' name to a unique integer
+	 * @return Hashtable mapping all the fields to an integer
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	private Hashtable<String, Integer> mapNamesField()
 			throws FileNotFoundException, IOException {
 		BufferedReader in;
