@@ -36,7 +36,6 @@ public class Footprints implements Parser {
 			Validator val = schema.newValidator();  
 			val.validate(new StreamSource(reader));
 			
-			System.out.println("The xml string is valid");
 			return true;
 		} catch (Exception e) {
 			System.out.println("The xml string is NOT valid");
