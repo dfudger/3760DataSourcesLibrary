@@ -54,8 +54,12 @@ public class Footprints implements Parser {
 	}
 
 	/**
-	 * Returns an array containing all the Footprints data requested by the user
-	 * @return Array of data
+	 * Parses the Footprint's data. First, it makes a connection to the sunshine
+	 * SQL server for accessing Footprints' data base. Then, it queries the data
+	 * base. Finally, all the data retrieved are added to the array of data.
+	 * 
+	 * @return Returns an array containing all the Footprints data requested by
+	 *         the user
 	 */
 	@Override
 	public ArrayList<Hashtable<Integer, Object>> parse() {
