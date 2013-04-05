@@ -12,13 +12,17 @@ import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Validator;
 
+/**
+* This Class extends the Parser interface and is responsible for retrieving, parsing and validating the data for Big Brother.
+* @author Matt Stark and Lawrence Wong
+*/
 public class Brother implements Parser {
 	private Integer fileCount = 0;
+	/**
+	* This method is responsible for parsing the internet.xml file that is retrieved from the general server. This method calls the method resposible for retrieving the file.
+	* @return ArrayList<Hashtable<Integer, Object>> This contains the records within from Big Brother.
+	*/
 	public ArrayList<Hashtable<Integer, Object>> parse() {
-		/* Open or access internet.xml */
-		/* parse it for data*/
-		/* store the info found in the database tags (as a string) into the Hashtable as an object*/
-		/* return the ArrayList with the data inside*/
 		BufferedReader in = null;
 		String line;
 		String prevLine = null;
@@ -69,6 +73,9 @@ public class Brother implements Parser {
 
 	}
 
+	/**
+	* This method is responsible for retrieving the file from the general server. This method is called by parse.
+	*/
 	private void getFile(){
 		fileCount++;
 		if(fileCount > 25){
@@ -92,12 +99,22 @@ public class Brother implements Parser {
         }
 	}
 
+	/**
+	* This method is called by parse and is used to change the comment beside the row, into it's own timestamp tag so it can be more effectively parsed by the Data Warehouse.
+	* @return String The new string with the timestamp.
+	* @param line This is the line that requires the swap from comment to timestamp tag.
+	*/
 	private String addTimestamp(String line){
 		line = line.replace("<!--", "<timestamp>");
 		line = line.replace("-->", "</timestamp>");
 		return line;
 	}
 
+	/**
+	* This method is used to validate the DTO with the Big Brother xsd file.
+	* @return boolean A boolean value based on whether the String was validated.
+	* @param xml This is the dto string that requires the validation.
+	*/
 	public boolean validate(String xml) {
 		try {
 			StringReader reader = new StringReader(xml);  
@@ -116,10 +133,18 @@ public class Brother implements Parser {
 		}
 	}
 
+	/**
+	* This method returns the field enumeration file specific to Big Brother
+	* @return String This is the file name.
+	*/
 	public String getFieldFile() {
 		return "BigBrotherFields.txt";
 	}
 
+	/**
+	* This method is used as a testing harness to be used to simulate the Retriever requesting Big Brother parsing and validation.
+	* @param args This is an array of Strings that are the command line arguments when calling the program to be run.
+	*/
 	public static void main(String[] args) {
 		ArrayList<Hashtable<Integer, Object>> data;
 		Brother big = new Brother();
@@ -139,12 +164,23 @@ public class Brother implements Parser {
 		System.out.println("Done");
 	}
 
+	/**
+	* This class was built inside the Brother class and extends Thread. This is used for the timeouts and multithreading that is required in case the file download fails.
+	* @author Matt Stark
+	*/
 	private static class Worker extends Thread {
 		private final Process process;
 		private boolean exit = false;
+		/**
+		* This is the constructor. It copies over the process parameter to being a class variable of Worker.
+		* @param process This is the process that you want to have threaded
+		*/
 		private Worker(Process process) {
 			this.process = process;
 		}
+		/**
+		* This is the method that is run when the program signals for the thread to start. It calls the waitFor method in order to monitor and keep track of the progress of the execution of the process. The class variable exit is set to true if the waitFor finishes.
+		*/
 		public void run() {
 			try { 
 				process.waitFor();
